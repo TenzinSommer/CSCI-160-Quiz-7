@@ -1,0 +1,24 @@
+public static long getWays(int n, List<Long> c, int solnCount, int location) {
+    // Write your code here
+    // take numbers inside c, how many different ways to add them up to get n?
+    // return number of ways
+    // recursively: base case is n = 0 or list is empty
+    // if so, return 0
+    long cLength = c.size();
+    if (n == 0 || c.size() == 0) {
+        return 0;
+    }
+    if (n % c.get(location) == 0) {
+        return getWays(n, c, solnCount, location++);
+    }
+    if (location >= c.size()) {
+        return solnCount;
+    }
+    
+    return getWays(n, c, solnCount, location);
+    
+    
+    
+    
+    
+    }

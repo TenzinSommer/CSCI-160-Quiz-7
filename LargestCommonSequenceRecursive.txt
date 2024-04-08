@@ -1,0 +1,24 @@
+public static List<Integer> longestCommonSubsequence(List<Integer> a, List<Integer> b, int aLength, int bLength) {
+    // Write your code here
+    List<Integer> myEmptyList = Collections.<Integer>emptyList();
+    
+    if (aLength == 0 || bLength == 0) {
+        return myEmptyList; // checks if either list has length 0, in which 
+        // case no common subsequence
+    }
+    
+    if (a.get(aLength - 1) == b.get(bLength - 1)) {
+        myEmptyList.add(a.get(aLength - 1));
+        return longestCommonSubsequence(a, b, aLength - 1, bLength - 1);
+        // checks if last characters in a and b are the same, in which case checks
+        // if second last characters in a and b are also the same
+    }
+    
+    else if (longestCommonSubsequence(a, b, aLength, bLength - 1).size() > longestCommonSubsequence(a, b, aLength - 1, bLength).size()) {
+        return longestCommonSubsequence(a, b, aLength, bLength - 1);
+    } else {
+        return longestCommonSubsequence(a, b, aLength - 1, bLength);
+    }
+    // compares size of two arrays depending on if an element of a is gone or an
+    // element of b is gone
+    }
